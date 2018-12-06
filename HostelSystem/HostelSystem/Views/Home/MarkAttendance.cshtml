@@ -1,0 +1,105 @@
+﻿@model IEnumerable< HostelSystem.Models.MarkAttendance>
+
+
+@{
+    ViewBag.Title = "MarkAttendance";
+}
+<script type="text/javascript">
+
+ 
+    function DoIncrement(val) {
+      
+        var i = $("#txt_"+val).val();
+        i++;
+        $("#txt_"+val).val(i);
+    }
+    function DoDecrement(val) {
+
+        var i = $("#txt_"+val).val();
+        if(i > 0)
+        {
+            i--;
+
+        }
+        $("#txt_"+val).val(i);
+    }
+</script>
+<body>
+
+    @using (Html.BeginForm())
+    {
+    <h2>MarkAttendance</h2>
+        if (Model != null)
+        {
+
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    
+                    @Html.DisplayNameFor(model => model.RoomNo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StudentId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FoodId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FoodName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DateMarked)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AtdCount)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RoomNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => item.FoodId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FoodName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateMarked)
+                    </td>
+                    <td>
+                        <!--
+                        @Html.DisplayFor(modelItem => item.AtdCount)    
+                        -->
+                    </td>
+                    <td >
+                        
+                        <button  type="button" onclick="DoIncrement(@item.StudentId);" id="btn_@item.Id" >&#9650</button>
+                        @Html.TextBox("AtdCount", item.AtdCount, new { id = "txt_" + item.StudentId })
+                        <button  type="button" onclick="DoDecrement(@item.StudentId);" id="btn_@item.StudentId">&#9660</button>
+                    </td>
+
+                </tr>
+            }
+
+        </table>
+
+        }
+        <button type="submit">Submit</button>
+    }
+
+
+</body>

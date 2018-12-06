@@ -1,0 +1,257 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HostelManagementSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AllotmentDb">
+    <Key>
+      <PropertyRef Name="AllotmentId" />
+    </Key>
+    <Property Name="AllotmentId" Type="Int32" Nullable="false" />
+    <Property Name="StudentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Roomid" Type="Int32" />
+    <Property Name="Astatus" Type="Boolean" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="RoomsDb" Relationship="Self.FK__Allotment__Roomi__24927208" FromRole="AllotmentDb" ToRole="RoomsDb" />
+    <NavigationProperty Name="StudentDb" Relationship="Self.FK__Allotment__Stude__239E4DCF" FromRole="AllotmentDb" ToRole="StudentDb" />
+  </EntityType>
+  <EntityType Name="EmployeeDb">
+    <Key>
+      <PropertyRef Name="CNIC" />
+    </Key>
+    <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ContactNo" Type="Int32" Nullable="false" />
+    <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Fooditem">
+    <Key>
+      <PropertyRef Name="FoodId" />
+    </Key>
+    <Property Name="FoodId" Type="Int32" Nullable="false" />
+    <Property Name="MessId" Type="Int32" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Dday" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FoodType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FoodName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MessMenue" Relationship="Self.FK__Fooditems__MessI__2A4B4B5E" FromRole="Fooditems" ToRole="MessMenue" />
+    <NavigationProperty Name="MessAttandances" Relationship="Self.FK__MessAttan__FoodI__32E0915F" FromRole="Fooditems" ToRole="MessAttandance" />
+  </EntityType>
+  <EntityType Name="HostelDb">
+    <Key>
+      <PropertyRef Name="Hid" />
+    </Key>
+    <Property Name="Hid" Type="Int32" Nullable="false" />
+    <Property Name="HName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Htype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="MessMenues" Relationship="Self.FK__MessMenue__Hid__276EDEB3" FromRole="HostelDb" ToRole="MessMenue" />
+    <NavigationProperty Name="RoomsDbs" Relationship="Self.FK__RoomsDb__Hid__1273C1CD" FromRole="HostelDb" ToRole="RoomsDb" />
+  </EntityType>
+  <EntityType Name="LoginDb">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MessAttandance">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoomNo" Type="Int32" />
+    <Property Name="StudentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FoodId" Type="Int32" />
+    <Property Name="DateMarked" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AtdCount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Fooditem" Relationship="Self.FK__MessAttan__FoodI__32E0915F" FromRole="MessAttandance" ToRole="Fooditems" />
+    <NavigationProperty Name="RoomsDb" Relationship="Self.FK__MessAttan__RoomN__30F848ED" FromRole="MessAttandance" ToRole="RoomsDb" />
+    <NavigationProperty Name="StudentDb" Relationship="Self.FK__MessAttan__Stude__31EC6D26" FromRole="MessAttandance" ToRole="StudentDb" />
+  </EntityType>
+  <EntityType Name="MessMenue">
+    <Key>
+      <PropertyRef Name="MessId" />
+    </Key>
+    <Property Name="MessId" Type="Int32" Nullable="false" />
+    <Property Name="Hid" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Fooditems" Relationship="Self.FK__Fooditems__MessI__2A4B4B5E" FromRole="MessMenue" ToRole="Fooditems" />
+    <NavigationProperty Name="HostelDb" Relationship="Self.FK__MessMenue__Hid__276EDEB3" FromRole="MessMenue" ToRole="HostelDb" />
+  </EntityType>
+  <EntityType Name="RoomsDb">
+    <Key>
+      <PropertyRef Name="Roomid" />
+    </Key>
+    <Property Name="Roomid" Type="Int32" Nullable="false" />
+    <Property Name="RoomNo" Type="Int32" Nullable="false" />
+    <Property Name="RoomCapacity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Comments" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Details" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Hid" Type="Int32" />
+    <NavigationProperty Name="AllotmentDbs" Relationship="Self.FK__Allotment__Roomi__24927208" FromRole="RoomsDb" ToRole="AllotmentDb" />
+    <NavigationProperty Name="HostelDb" Relationship="Self.FK__RoomsDb__Hid__1273C1CD" FromRole="RoomsDb" ToRole="HostelDb" />
+    <NavigationProperty Name="MessAttandances" Relationship="Self.FK__MessAttan__RoomN__30F848ED" FromRole="RoomsDb" ToRole="MessAttandance" />
+  </EntityType>
+  <EntityType Name="StudentDb">
+    <Key>
+      <PropertyRef Name="CNIC" />
+    </Key>
+    <Property Name="CNIC" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="RegNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Contact_" Type="Int32" Nullable="false" />
+    <Property Name="BloodGroup" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="AllotmentDbs" Relationship="Self.FK__Allotment__Stude__239E4DCF" FromRole="StudentDb" ToRole="AllotmentDb" />
+    <NavigationProperty Name="MessAttandances" Relationship="Self.FK__MessAttan__Stude__31EC6D26" FromRole="StudentDb" ToRole="MessAttandance" />
+  </EntityType>
+  <Association Name="FK__Allotment__Roomi__24927208">
+    <End Role="RoomsDb" Type="Self.RoomsDb" Multiplicity="0..1" />
+    <End Role="AllotmentDb" Type="Self.AllotmentDb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomsDb">
+        <PropertyRef Name="Roomid" />
+      </Principal>
+      <Dependent Role="AllotmentDb">
+        <PropertyRef Name="Roomid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Allotment__Stude__239E4DCF">
+    <End Role="StudentDb" Type="Self.StudentDb" Multiplicity="0..1" />
+    <End Role="AllotmentDb" Type="Self.AllotmentDb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentDb">
+        <PropertyRef Name="CNIC" />
+      </Principal>
+      <Dependent Role="AllotmentDb">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Fooditems__MessI__2A4B4B5E">
+    <End Role="MessMenue" Type="Self.MessMenue" Multiplicity="0..1" />
+    <End Role="Fooditems" Type="Self.Fooditem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MessMenue">
+        <PropertyRef Name="MessId" />
+      </Principal>
+      <Dependent Role="Fooditems">
+        <PropertyRef Name="MessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MessAttan__FoodI__32E0915F">
+    <End Role="Fooditems" Type="Self.Fooditem" Multiplicity="0..1" />
+    <End Role="MessAttandance" Type="Self.MessAttandance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fooditems">
+        <PropertyRef Name="FoodId" />
+      </Principal>
+      <Dependent Role="MessAttandance">
+        <PropertyRef Name="FoodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MessMenue__Hid__276EDEB3">
+    <End Role="HostelDb" Type="Self.HostelDb" Multiplicity="0..1" />
+    <End Role="MessMenue" Type="Self.MessMenue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HostelDb">
+        <PropertyRef Name="Hid" />
+      </Principal>
+      <Dependent Role="MessMenue">
+        <PropertyRef Name="Hid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RoomsDb__Hid__1273C1CD">
+    <End Role="HostelDb" Type="Self.HostelDb" Multiplicity="0..1" />
+    <End Role="RoomsDb" Type="Self.RoomsDb" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HostelDb">
+        <PropertyRef Name="Hid" />
+      </Principal>
+      <Dependent Role="RoomsDb">
+        <PropertyRef Name="Hid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MessAttan__RoomN__30F848ED">
+    <End Role="RoomsDb" Type="Self.RoomsDb" Multiplicity="0..1" />
+    <End Role="MessAttandance" Type="Self.MessAttandance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RoomsDb">
+        <PropertyRef Name="Roomid" />
+      </Principal>
+      <Dependent Role="MessAttandance">
+        <PropertyRef Name="RoomNo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__MessAttan__Stude__31EC6D26">
+    <End Role="StudentDb" Type="Self.StudentDb" Multiplicity="0..1" />
+    <End Role="MessAttandance" Type="Self.MessAttandance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StudentDb">
+        <PropertyRef Name="CNIC" />
+      </Principal>
+      <Dependent Role="MessAttandance">
+        <PropertyRef Name="StudentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="HostelManagementSystemEntities5" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AllotmentDbs" EntityType="Self.AllotmentDb" />
+    <EntitySet Name="EmployeeDbs" EntityType="Self.EmployeeDb" />
+    <EntitySet Name="Fooditems" EntityType="Self.Fooditem" />
+    <EntitySet Name="HostelDbs" EntityType="Self.HostelDb" />
+    <EntitySet Name="LoginDbs" EntityType="Self.LoginDb" />
+    <EntitySet Name="MessAttandances" EntityType="Self.MessAttandance" />
+    <EntitySet Name="MessMenues" EntityType="Self.MessMenue" />
+    <EntitySet Name="RoomsDbs" EntityType="Self.RoomsDb" />
+    <EntitySet Name="StudentDbs" EntityType="Self.StudentDb" />
+    <AssociationSet Name="FK__Allotment__Roomi__24927208" Association="Self.FK__Allotment__Roomi__24927208">
+      <End Role="RoomsDb" EntitySet="RoomsDbs" />
+      <End Role="AllotmentDb" EntitySet="AllotmentDbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Allotment__Stude__239E4DCF" Association="Self.FK__Allotment__Stude__239E4DCF">
+      <End Role="StudentDb" EntitySet="StudentDbs" />
+      <End Role="AllotmentDb" EntitySet="AllotmentDbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Fooditems__MessI__2A4B4B5E" Association="Self.FK__Fooditems__MessI__2A4B4B5E">
+      <End Role="MessMenue" EntitySet="MessMenues" />
+      <End Role="Fooditems" EntitySet="Fooditems" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MessAttan__FoodI__32E0915F" Association="Self.FK__MessAttan__FoodI__32E0915F">
+      <End Role="Fooditems" EntitySet="Fooditems" />
+      <End Role="MessAttandance" EntitySet="MessAttandances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MessMenue__Hid__276EDEB3" Association="Self.FK__MessMenue__Hid__276EDEB3">
+      <End Role="HostelDb" EntitySet="HostelDbs" />
+      <End Role="MessMenue" EntitySet="MessMenues" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RoomsDb__Hid__1273C1CD" Association="Self.FK__RoomsDb__Hid__1273C1CD">
+      <End Role="HostelDb" EntitySet="HostelDbs" />
+      <End Role="RoomsDb" EntitySet="RoomsDbs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MessAttan__RoomN__30F848ED" Association="Self.FK__MessAttan__RoomN__30F848ED">
+      <End Role="RoomsDb" EntitySet="RoomsDbs" />
+      <End Role="MessAttandance" EntitySet="MessAttandances" />
+    </AssociationSet>
+    <AssociationSet Name="FK__MessAttan__Stude__31EC6D26" Association="Self.FK__MessAttan__Stude__31EC6D26">
+      <End Role="StudentDb" EntitySet="StudentDbs" />
+      <End Role="MessAttandance" EntitySet="MessAttandances" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

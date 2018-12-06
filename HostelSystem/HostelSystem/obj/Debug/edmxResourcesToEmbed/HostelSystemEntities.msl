@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HostelManagementSystemModelStoreContainer" CdmEntityContainer="HostelManagementSystemEntities5">
+    <EntitySetMapping Name="AllotmentDbs">
+      <EntityTypeMapping TypeName="HostelManagementSystemModel.AllotmentDb">
+        <MappingFragment StoreEntitySet="AllotmentDb">
+          <ScalarProperty Name="AllotmentId" ColumnName="AllotmentId" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Roomid" ColumnName="Roomid" />
+          <ScalarProperty Name="Astatus" ColumnName="Astatus" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EmployeeDbs">
+      <EntityTypeMapping TypeName="HostelManagementSystemModel.EmployeeDb">
+        <MappingFragment StoreEntitySet="EmployeeDb">
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fooditems">
+      <EntityTypeMapping TypeName="HostelManagementSystemModel.Fooditem">
+        <MappingFragment StoreEntitySet="Fooditems">
+          <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+          <ScalarProperty Name="MessId" ColumnName="MessId" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Dday" ColumnName="Dday" />
+          <ScalarProperty Name="FoodType" ColumnName="FoodType" />
+          <ScalarProperty Name="FoodName" ColumnName="FoodName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HostelDbs">
+      <EntityTypeMapping TypeName="HostelManagementSystemModel.HostelDb">
+        <MappingFragment StoreEntitySet="HostelDb">
+          <ScalarProperty Name="Hid" ColumnName="Hid" />
+          <ScalarProperty Name="HName" ColumnName="HName" />
+          <ScalarProperty Name="Htype" ColumnName="Htype" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginDbs">
+      <EntityTypeMapping TypeName="HostelManagementSystemModel.LoginDb">
+        <MappingFragment StoreEntitySet="LoginDb">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessAttandances">
+      <EntityTypeMapping TypeName="HostelManagementSystemModel.MessAttandance">
+        <MappingFragment StoreEntitySet="MessAttandance">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="FoodId" ColumnName="FoodId" />
+          <ScalarProperty Name="DateMarked" ColumnName="DateMarked" />
+          <ScalarProperty Name="AtdCount" ColumnName="AtdCount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MessMenues">
+      <EntityTypeMapping TypeName="HostelManagementSystemModel.MessMenue">
+        <MappingFragment StoreEntitySet="MessMenue">
+          <ScalarProperty Name="MessId" ColumnName="MessId" />
+          <ScalarProperty Name="Hid" ColumnName="Hid" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoomsDbs">
+      <EntityTypeMapping TypeName="HostelManagementSystemModel.RoomsDb">
+        <MappingFragment StoreEntitySet="RoomsDb">
+          <ScalarProperty Name="Roomid" ColumnName="Roomid" />
+          <ScalarProperty Name="RoomNo" ColumnName="RoomNo" />
+          <ScalarProperty Name="RoomCapacity" ColumnName="RoomCapacity" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Details" ColumnName="Details" />
+          <ScalarProperty Name="Hid" ColumnName="Hid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StudentDbs">
+      <EntityTypeMapping TypeName="HostelManagementSystemModel.StudentDb">
+        <MappingFragment StoreEntitySet="StudentDb">
+          <ScalarProperty Name="CNIC" ColumnName="CNIC" />
+          <ScalarProperty Name="RegNo" ColumnName="RegNo" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FatherName" ColumnName="FatherName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Contact_" ColumnName="Contact#" />
+          <ScalarProperty Name="BloodGroup" ColumnName="BloodGroup" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
