@@ -1,0 +1,47 @@
+﻿@model IEnumerable<HostelSystem.Models.LOGIN>
+
+@{
+    ViewBag.Title = "SeniorWardenrequestApproval";
+}
+
+<h2>SeniorWardenrequestApproval</h2>
+@using (Html.BeginForm())
+{
+    <h2>MarkAttendance</h2>
+    if (Model != null)
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Email)
+                    </td>
+                    <td>
+                        <button>
+                            @Html.ActionLink("Approve", "ApproveWarden", "Employee", new { id1 = item.Email }, null)
+                        </button>
+
+                    </td>
+                    <td>
+                        <button>
+
+                            @Html.ActionLink("DisApprove", "DisApproveWarden", "Employee", new { id1 = item.Email }, null)
+                        </button>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    }
+}
+

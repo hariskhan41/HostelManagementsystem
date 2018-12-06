@@ -1,44 +1,127 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <title>
+        Hostel Management System
+    </title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a class="navbar-brand" href="#" style="color:#b5830b; font-family:Britannic; font-size:xx-large">KHADIJA HALL</a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:#b5830b">
+                        Registration
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>@Html.ActionLink("Employee", "EmployeeRegistration", "Home", null, new { style = "color:#b5830b " })</li>
+                        <li>@Html.ActionLink("Student", "Registration", "Home", null, new { style = "color:#b5830b " })</li>
+                    </ul>
+                </li>
+
+                <li>@Html.ActionLink("Login", "Login", "Home", null, new { style = "color:#b5830b " })</li>
+            </ul>
+
+        </div>
+    </nav>
+    <img src="~/images/2.png" style="max-width:50000px" />
+</body>
+</html>
+
+    @RenderBody()
+    <hr />
+<footer class="page-footer font-small black pt-4" style="background-color:#393839">
+
+    <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+
+        <!-- Grid row -->
+        <div class="row">
+
+
+            <!-- Grid column -->
+
+            <hr class="clearfix w-100 d-md-none pb-3">
+
+
+            <div class="col-md-3 mb-md-0 mb-3">
+
+
+                <h5 class="text-uppercase" style="color:#b5830b;font-family:Britannic; font-size:larger">contact us</h5>
+
+                <ul class="list-unstyled">
+                    <li style="color:white">
+                        University Of Engineering and Technology, Lahore
+                    </li>
+                    <li style="color:white">
+                        0499998875
+                    </li>
+                    <li style="color:white">
+                        abidumar@gmail.com
+                    </li>
+                    <li style="color:white">
+                        street 16, Univeristy Of Engineering & Technology, Lahore
+                    </li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+
+            </div>
+            <div class="col-md-3 mb-md-0 mb-3">
+                <h5 class="text-uppercase" style="color:#b5830b; font-family: Britannic;font-size:larger">Links</h5>
+
+                <ul class="list-unstyled">
+                    <li style="color:white">
+                        Home
+                    </li>
+                    <li style="color:white">
+                        Gallery
+                    </li>
+                    <li style="color:white">
+                        Staff
+                    </li>
+
+                </ul>
+            </div>
+            <div class="col-md-3 mb-md-0 mb-3">
+
+                <!-- Links -->
+                <h5 class="text-uppercase" style="color:#b5830b ;font-family :Britannic; font-size:larger">Follow Us</h5>
+
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="#!" style="color:white">facebook</a>
+                    </li>
+                    <li>
+                        <a href="#!" style="color:white">pinterest</a>
+                    </li>
+                    <li>
+                        <a href="#!" style="color:white">twitter</a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div class="footer-copyright text-center py-3">
+        <p style="color:#b5830b; font-family:Britannic">© 2018 Copyright:Hostel Managment System</p>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-</body>
-</html>
+</footer>
+
+

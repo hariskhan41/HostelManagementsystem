@@ -212,7 +212,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="HostelManagementSystemEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="HostelManagementSystemEntities7" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="AllotmentDbs" EntityType="Self.AllotmentDb" />
     <EntitySet Name="EmployeeDbs" EntityType="Self.EmployeeDb" />
     <EntitySet Name="Fooditems" EntityType="Self.Fooditem" />

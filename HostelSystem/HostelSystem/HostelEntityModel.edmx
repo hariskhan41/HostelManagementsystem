@@ -461,7 +461,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HostelManagementSystemEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HostelManagementSystemEntities7" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AllotmentDbs" EntityType="Self.AllotmentDb" />
           <EntitySet Name="EmployeeDbs" EntityType="Self.EmployeeDb" />
           <EntitySet Name="Fooditems" EntityType="Self.Fooditem" />
@@ -509,7 +509,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HostelManagementSystemModelStoreContainer" CdmEntityContainer="HostelManagementSystemEntities">
+        <EntityContainerMapping StorageEntityContainer="HostelManagementSystemModelStoreContainer" CdmEntityContainer="HostelManagementSystemEntities7">
           <EntitySetMapping Name="AllotmentDbs">
             <EntityTypeMapping TypeName="HostelManagementSystemModel.AllotmentDb">
               <MappingFragment StoreEntitySet="AllotmentDb">

@@ -13,10 +13,10 @@ namespace HostelSystem
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HostelManagementSystemEntities : DbContext
+    public partial class HostelManagementSystemEntities7 : DbContext
     {
-        public HostelManagementSystemEntities()
-            : base("name=HostelManagementSystemEntities")
+        public HostelManagementSystemEntities7()
+            : base("name=HostelManagementSystemEntities7")
         {
         }
     

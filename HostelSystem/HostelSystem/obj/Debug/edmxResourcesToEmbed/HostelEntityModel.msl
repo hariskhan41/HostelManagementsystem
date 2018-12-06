@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="HostelManagementSystemModelStoreContainer" CdmEntityContainer="HostelManagementSystemEntities">
+  <EntityContainerMapping StorageEntityContainer="HostelManagementSystemModelStoreContainer" CdmEntityContainer="HostelManagementSystemEntities7">
     <EntitySetMapping Name="AllotmentDbs">
       <EntityTypeMapping TypeName="HostelManagementSystemModel.AllotmentDb">
         <MappingFragment StoreEntitySet="AllotmentDb">

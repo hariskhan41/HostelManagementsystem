@@ -1,0 +1,49 @@
+﻿@model IEnumerable< HostelSystem.Models.LOGIN>
+
+@{
+    ViewBag.Title = "WardenrequestApproal";
+}
+
+<h2>WardenrequestApproal</h2>
+
+@using (Html.BeginForm())
+{
+    if (Model != null)
+    {
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(model => item.Email)
+                    </td>
+                    <td>
+                        <button>
+                            @Html.ActionLink("Approve", "ApproveRT", "Employee", new { mail = item.Email }, null)
+                        </button>
+
+                    </td>
+                    <td>
+                        <button>
+
+                            @Html.ActionLink("DisApprove", "DisApproveRT", "Employee", new { mail = item.Email }, null)
+                        </button>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    }
+
+}
+
+

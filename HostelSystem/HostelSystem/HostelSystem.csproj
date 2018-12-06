@@ -202,6 +202,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Attendance.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="EmployeeDb.cs">
@@ -242,9 +243,15 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Attendance.cs" />
+    <Compile Include="Models\EmployeeRegistrationViewModel.cs" />
+    <Compile Include="Models\GmailClass.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LOGIN.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MarkAttendance.cs" />
+    <Compile Include="Models\multitables.cs" />
+    <Compile Include="Models\StaticFunction.cs" />
+    <Compile Include="Models\StudentRegistrationViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoomsDb.cs">
       <DependentUpon>HostelEntityModel.tt</DependentUpon>
@@ -271,6 +278,7 @@
       <DependentUpon>HostelEntityModel.edmx</DependentUpon>
       <LastGenOutput>HostelEntityModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Images\2.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -332,6 +340,13 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\MarkAttendance.cshtml" />
+    <Content Include="Views\Home\Registration.cshtml" />
+    <Content Include="Views\Home\EmployeeRegistration.cshtml" />
+    <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Employee\RTrequestApproal.cshtml" />
+    <Content Include="Views\Employee\WardenrequestApproal.cshtml" />
+    <Content Include="Views\Employee\SeniorWardenrequestApproval.cshtml" />
+    <Content Include="Views\Employee\RTrequestApproval.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

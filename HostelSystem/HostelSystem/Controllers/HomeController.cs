@@ -11,7 +11,227 @@ namespace HostelSystem.Controllers
 {
     public class HomeController : Controller
     {
-        
+        public ActionResult Login()
+        {
+            
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Login(LoginDb login)
+        {
+
+            using (HostelManagementSystemEntities7 db = new HostelManagementSystemEntities7())
+            {
+
+                var user = db.LoginDbs.SingleOrDefault(x => x.Email == login.Email);
+                if (user != null)
+                {
+                    if(user.Status == "Yes")
+                    {
+                        if (user.Password == login.Password)
+                        {
+                            if (user.Designation == "Student")
+                            {
+                                return RedirectToAction("Registration");
+                            }
+                            if (user.Designation == "RT")
+                            {
+                                return RedirectToAction("EmployeeRegistration");
+                            }
+                            if (user.Designation == "Warden")
+                            {
+                                return RedirectToAction("EmployeeRegistration");
+                            }
+                            if (user.Designation == "SeniorWarden")
+                            {
+                                return RedirectToAction("Registration");
+                            }
+                            if (user.Designation == "MessEmployee")
+                            {
+                                return RedirectToAction("Registration");
+                            }
+
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("", "Email Or Password is InCorrect");
+                        }
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "can,t login before approval of the request");
+
+                    }
+                    
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Register yourself First");
+                }
+
+
+            }
+            return View();
+        }
+        public ActionResult Registration()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult Registration(StudentRegistrationViewModel reg)
+        {
+            try
+            {
+                bool flag = false;
+                HostelManagementSystemEntities7 db = new HostelManagementSystemEntities7();
+                foreach (StudentDb p in db.StudentDbs)
+                {
+                    if (p.Email == reg.Email)
+                    {
+                        flag = true;
+                        ModelState.AddModelError("", "Email already exist");
+                    }
+                    if (p.CNIC == reg.CNIC)
+                    {
+                        flag = true;
+                        ModelState.AddModelError("", "CNIC already exist");
+                    }
+                    if (p.RegNo == reg.RegNo)
+                    {
+                        flag = true;
+                        ModelState.AddModelError("", "Invalid Registration Number");
+                    }
+                    if (flag == true)
+                    {
+                        break;
+                    }
+                }
+                if (flag == true)
+                {
+                    return View();
+                }
+                StudentDb s = new StudentDb();
+                s.Address = reg.Address;
+                s.BloodGroup = reg.BloodGroup;
+                s.CNIC = reg.CNIC;
+                s.Contact_ = reg.ContactNo;
+                s.FatherName = reg.FatherName;
+                s.Name = reg.Name;
+                s.DOB = reg.DOB;
+                s.RegNo = reg.RegNo;
+                s.Password = reg.password;
+                s.Email = reg.Email;
+                LoginDb l = new LoginDb();
+                l.Email = reg.Email;
+                l.Password = reg.password;
+                l.Designation = "Student";
+                l.Status = "NO";
+                db.LoginDbs.Add(l);
+                db.StudentDbs.Add(s);
+                db.SaveChanges();
+                ModelState.Clear();
+
+
+                return RedirectToAction("login");
+            }
+            catch (Exception e)
+            {
+                throw (e);
+            }
+
+
+
+        }
+
+
+
+
+        public ActionResult EmployeeRegistration()
+        {
+            return View();
+        }
+
+        [HttpPost]
+
+        public ActionResult EmployeeRegistration(EmployeeRegistrationViewModel reg)
+        {
+
+            try
+                
+            {
+                bool flag = false;
+                HostelManagementSystemEntities7 db = new HostelManagementSystemEntities7();
+                EmployeeDb s = new EmployeeDb();
+
+                foreach (EmployeeDb e in db.EmployeeDbs)
+                {
+                    if (e.Email == reg.email )
+                    {
+                        flag = true;
+                        ModelState.AddModelError("", "Email already exist");
+                        if(e.CNIC == reg.CNIC)
+                        {
+                            flag = true;
+                            ModelState.AddModelError("", "CNIC already exist");
+                            break;
+                        }
+                        break;
+                    }
+                    if(e.CNIC == reg.CNIC)
+                    {
+                        flag = true;
+                        ModelState.AddModelError("", "CNIC already exist");
+                        break;
+                    }
+                }
+                if (flag == true)
+                {
+                    return View();
+                }
+                else
+                {
+                    s.Address = reg.Address;
+                    s.BloodGroup = reg.BloodGroup;
+                    s.CNIC = reg.CNIC;
+                    s.ContactNo = reg.ContactNo;
+                    s.FatherName = reg.FatherName;
+                    s.Name = reg.Name;
+                    s.DOB = reg.DOB;
+                    s.Password = reg.password;
+                    s.Email = reg.email;
+                    
+
+                    s.Designation = reg.Designation;
+
+                    LoginDb l = new LoginDb();
+
+                    l.Designation = reg.Designation;
+                    l.Email = reg.email;
+                    l.Password = reg.password;
+                    l.Status = "NO";
+                    db.LoginDbs.Add(l);
+                    db.EmployeeDbs.Add(s);
+                    db.SaveChanges();
+                    ModelState.Clear();
+                    ViewBag.Message = "You are Registered Successfully";
+
+                    return RedirectToAction("login");
+                }
+                
+            }
+                
+
+
+                
+            
+            catch (Exception e)
+            {
+                throw (e);
+            }
+        }
+
 
         public ActionResult About()
         {
@@ -26,7 +246,6 @@ namespace HostelSystem.Controllers
 
             return View();
         }
-
         [HttpPost]
         public ActionResult MarkAttendance(FormCollection atd)
         {
@@ -34,7 +253,7 @@ namespace HostelSystem.Controllers
             {
                 string[] a = atd.AllKeys;
                 var added = atd[a[0]].Split(',');
-                HostelManagementSystemEntities db = new HostelManagementSystemEntities();
+                HostelManagementSystemEntities7 db = new HostelManagementSystemEntities7();
                 int i = 0;
                 MessAttandance M = new MessAttandance();
                 foreach (MarkAttendance m in Attendance.lst)
@@ -48,7 +267,7 @@ namespace HostelSystem.Controllers
                     db.SaveChanges();
                     i++;
                 }
-                return View(Attendance.lst);
+                return RedirectToAction("WardenrequestApproal", "Employee");
             }
             catch (Exception e)
             {
@@ -88,7 +307,7 @@ namespace HostelSystem.Controllers
         {
             //Add students from db to student list
             List<MarkAttendance> lstStudents = new List<MarkAttendance>();
-            HostelManagementSystemEntities db = new HostelManagementSystemEntities();
+            HostelManagementSystemEntities7 db = new HostelManagementSystemEntities7();
             foreach (StudentDb s in db.StudentDbs)
             {
                 MarkAttendance m = new MarkAttendance();
@@ -107,7 +326,7 @@ namespace HostelSystem.Controllers
         public List<MarkAttendance> AddFoodFromDatabase()
         {
             // Add food from db to food list
-            HostelManagementSystemEntities db = new HostelManagementSystemEntities();
+            HostelManagementSystemEntities7 db = new HostelManagementSystemEntities7();
             string type;
             DateTime dt = DateTime.Now;
             TimeSpan now = DateTime.Now.TimeOfDay;
@@ -140,7 +359,7 @@ namespace HostelSystem.Controllers
         public List<MarkAttendance> AddAllToStaticList()
         {
             MakeStaticListEmpty();
-            HostelManagementSystemEntities db = new HostelManagementSystemEntities();
+            HostelManagementSystemEntities7 db = new HostelManagementSystemEntities7();
             List<MarkAttendance> lstStudents = AddStudentsFromDatabase();
             List<MarkAttendance> lstfood = AddFoodFromDatabase();
 
