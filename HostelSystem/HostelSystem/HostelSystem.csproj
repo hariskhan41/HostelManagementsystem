@@ -347,6 +347,7 @@
     <Content Include="Views\Employee\WardenrequestApproal.cshtml" />
     <Content Include="Views\Employee\SeniorWardenrequestApproval.cshtml" />
     <Content Include="Views\Employee\RTrequestApproval.cshtml" />
+    <Content Include="Views\Home\MainPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
